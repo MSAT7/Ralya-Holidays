@@ -89,7 +89,10 @@ h2 {
 
 /* --- 1. Hero Section --- */
 #hero {
+  /* Fallback for older browsers */
   height: 100vh;
+  /* Modern fix: dynamically adjusts to mobile browser toolbars */
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,7 +102,7 @@ h2 {
   color: var(--white);
   
   /* Mobile Portrait Wallpaper - Update the filename here */
-  background: linear-gradient(rgba(0,78,106,0.6), rgba(0,78,106,0)), url('assets/banner_image_vertical.png') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,78,106,0), rgba(0,78,106,0)), url('assets/banner_image_vertical.png') no-repeat center center/cover;
 }
 
 #hero h1 {
@@ -110,7 +113,7 @@ h2 {
 /* Bouncing Arrow */
 .bouncing-arrow {
   position: absolute;
-  bottom: 6rem;
+  bottom: 4rem;
   font-size: 2.5rem;
   color: var(--white);
   text-decoration: none;
@@ -323,31 +326,40 @@ footer {
   gap: 1.5rem;
 }
 
+/* --- Updated Social Media Links (Icons) --- */
 .social-links {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .social-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  display: inline-flex;
+  transition: transform 0.3s ease; /* Smooth hover lift */
 }
 
 .social-links a:hover {
-  color: var(--accent-color); 
+  transform: translateY(-4px); /* Moves the icon up slightly on hover */
+}
+
+/* Optional: Add a subtle glow to the white X logo on hover so it pops */
+.social-links .icon-x path {
+  transition: fill 0.3s ease;
+}
+.social-links a:hover .icon-x path {
+  fill: var(--accent-color); /* Changes X to your Sunset Coral on hover */
 }
 
 .footer-text p {
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1 rem;
   color: rgba(255, 255, 255, 0.8); 
 }
-
+.developer-credit {
+  font-size: 0.6rem;
+}
 .developer-credit a {
   color: var(--secondary-color); 
   text-decoration: none;
