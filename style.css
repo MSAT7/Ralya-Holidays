@@ -34,6 +34,7 @@ h2 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 1.75rem;
+  font-family: Expletus Sans;
   color: var(--primary-color);
 }
 
@@ -78,6 +79,7 @@ h2 {
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
+  font-family: Expletus Sans;
   transition: color 0.3s ease;
 }
 
@@ -97,7 +99,7 @@ h2 {
   color: var(--white);
   
   /* Mobile Portrait Wallpaper - Update the filename here */
-  background: linear-gradient(rgba(0,78,106,0.6), rgba(0,78,106,0.4)), url('assets/banner_image_vertical.png') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,78,106,0.6), rgba(0,78,106,0)), url('assets/banner_image_vertical.png') no-repeat center center/cover;
 }
 
 #hero h1 {
@@ -108,7 +110,7 @@ h2 {
 /* Bouncing Arrow */
 .bouncing-arrow {
   position: absolute;
-  bottom: 4rem;
+  bottom: 6rem;
   font-size: 2.5rem;
   color: var(--white);
   text-decoration: none;
@@ -123,34 +125,35 @@ h2 {
 
 /* --- 2. Packages Carousel --- */
 .carousel {
-  overflow: hidden; /* Hides cards that slide outside the container */
+  overflow-x: auto; /* Restores manual swiping! */
   padding-bottom: 1rem;
   width: 100%;
+  scrollbar-width: none; /* Hides scrollbar on Firefox */
+  scroll-behavior: auto; 
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Hides scrollbar on Chrome/Safari/Edge */
 }
 
 .carousel-track {
   display: flex;
   gap: 1.5rem;
   width: max-content;
-  /* 30s controls the speed. linear keeps it smooth. infinite loops it. */
-  animation: scroll-infinite 30s linear infinite; 
+  /* Removed the CSS animation */
 }
 
-/* Pause the rotation if the user hovers or taps on a card */
-.carousel:hover .carousel-track,
-.carousel:active .carousel-track {
-  animation-play-state: paused;
-}
+/* (Make sure you delete the .carousel:hover and @keyframes scroll-infinite rules that were here before) */
 
 .card {
-  min-width: 70vw; /* Narrowed down from 85vw */
-  max-width: 300px; /* Caps the width so it doesn't stretch too far on tablets */
+  min-width: 70vw; 
+  max-width: 300px; 
   flex-shrink: 0; 
   background-color: var(--white);
   padding: 0; 
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  /* border-top: 4px solid var(--secondary-color); */
+  border-top: 4px solid var(--accent-color);
   overflow: hidden; 
   display: flex;
   flex-direction: column;
@@ -158,7 +161,7 @@ h2 {
 
 .card img {
   width: 100%;
-  height: 260px; /* Increased from 200px for a taller, more vertical proportion */
+  height: 260px; 
   object-fit: cover; 
 }
 
@@ -420,7 +423,7 @@ footer {
     left: 0;
     width: 100%;
     /* Glass effect for mobile menu */
-    background-color: rgba(195, 239, 255, 0.95); /* Slightly darker for readability */
+    background-color: rgba(6, 109, 195, 0.85); /* Slightly darker for readability */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     
