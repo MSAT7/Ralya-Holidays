@@ -1,0 +1,504 @@
+/* --- Base Variables & Reset --- */
+:root {
+  --primary-color: #004E6A; 
+  --secondary-color: #39B5B0;
+  --accent-color: #61abff;
+  --whatsapp-color: #25D366;
+  --text-dark: #333333;
+  --bg-light: rgba(100, 146, 184, 0.15);
+  --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; 
+  scroll-padding-top: 70px; /* Prevents the sticky nav from hiding section titles */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+section {
+  padding: 4rem 1.5rem;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  color: var(--primary-color);
+}
+
+/* --- Sticky Navbar --- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* Glass effect */
+  background-color: rgba(6, 109, 195, 0.85); /* Semi-transparent with a slight blue tint */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge highlight */
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-family: Expletus Sans;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  /* Pushes the links to the right side */
+  margin-left: auto; 
+  /* Adds a little breathing room between the links and the WhatsApp button */
+  margin-right: 1.5rem;
+}
+
+.navbar .nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* --- 1. Hero Section --- */
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  color: var(--white);
+  
+  /* Mobile Portrait Wallpaper - Update the filename here */
+  background: linear-gradient(rgba(0,78,106,0.6), rgba(0,78,106,0.4)), url('assets/banner_image_vertical.png') no-repeat center center/cover;
+}
+
+#hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Bouncing Arrow */
+.bouncing-arrow {
+  position: absolute;
+  bottom: 4rem;
+  font-size: 2.5rem;
+  color: var(--white);
+  text-decoration: none;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-15px); }
+  60% { transform: translateY(-7px); }
+}
+
+/* --- 2. Packages Carousel --- */
+.carousel {
+  overflow: hidden; /* Hides cards that slide outside the container */
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  /* 30s controls the speed. linear keeps it smooth. infinite loops it. */
+  animation: scroll-infinite 30s linear infinite; 
+}
+
+/* Pause the rotation if the user hovers or taps on a card */
+.carousel:hover .carousel-track,
+.carousel:active .carousel-track {
+  animation-play-state: paused;
+}
+
+.card {
+  min-width: 70vw; /* Narrowed down from 85vw */
+  max-width: 300px; /* Caps the width so it doesn't stretch too far on tablets */
+  flex-shrink: 0; 
+  background-color: var(--white);
+  padding: 0; 
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  /* border-top: 4px solid var(--secondary-color); */
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 100%;
+  height: 260px; /* Increased from 200px for a taller, more vertical proportion */
+  object-fit: cover; 
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* The mathematical magic that creates a perfect, seamless loop */
+@keyframes scroll-infinite {
+  0% { transform: translateX(0); }
+  100% { 
+    /* Shifts left by exactly one set of 6 cards + gaps */
+    transform: translateX(calc(-50% - 0.75rem)); 
+  }
+}
+
+/* Update Media Query for Desktop Card Width */
+@media (min-width: 768px) {
+  .card {
+    min-width: 320px; 
+  }
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* --- 3. About Us --- */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* --- 4. Contact Form & WhatsApp --- */
+.contact-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+button {
+  padding: 1rem;
+  background-color: var(--accent-color);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  position: relative;
+}
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #ddd;
+  z-index: 1;
+}
+.divider span {
+  background-color: var(--bg-light);
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.whatsapp-btn {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--whatsapp-color);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* --- 5. FAQ Accordion --- */
+.accordion-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+details {
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+  list-style: none; 
+  color: var(--primary-color);
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details p {
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color); 
+}
+
+.footer-text p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8); 
+}
+
+.developer-credit a {
+  color: var(--secondary-color); 
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* --- Media Queries --- */
+
+/* Desktop Adjustments */
+@media (min-width: 768px) {
+  #hero {
+    /* Desktop Landscape Wallpaper - Update the filename here */
+    background: linear-gradient(rgba(0,78,106,0), rgba(0, 78, 106, 0)), url('assets/banner_image_horizontal.png') no-repeat center center/cover;
+  }
+  
+ card {
+    min-width: 280px; /* Reduced from 320px for better vertical proportions */
+  }
+  
+  .carousel {
+    justify-content: center; 
+  }
+}
+
+/* Mobile Navigation & Hamburger Menu */
+.menu-checkbox,
+.menu-icon {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+  }
+
+  .navicon {
+    background: var(--white);
+    display: block;
+    height: 2px;
+    width: 24px;
+    position: relative;
+    transition: background 0.2s ease-out;
+  }
+
+  .navicon::before,
+  .navicon::after {
+    background: var(--white);
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+  }
+
+  .navicon::before { top: -8px; }
+  .navicon::after { top: 8px; }
+
+  .navbar .nav-links {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    /* Glass effect for mobile menu */
+    background-color: rgba(195, 239, 255, 0.95); /* Slightly darker for readability */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    flex-direction: column;
+    gap: 0;
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .navbar .nav-links a {
+    padding: 1.2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: block;
+    width: 100%;
+  }
+
+  .navbar:has(.menu-checkbox:checked) .nav-links {
+    max-height: 250px;
+  }
+
+  .menu-checkbox:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+  .menu-checkbox:checked ~ .menu-icon .navicon::before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+  .menu-checkbox:checked ~ .menu-icon .navicon::after {
+    transform: rotate(45deg);
+    top: 0;
+  }
+}
+
+/* --- WhatsApp Icon & Actions Container (Navbar) --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-whatsapp {
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.nav-whatsapp:hover {
+  color: var(--whatsapp-color);
+}
+
+/* --- Official WhatsApp Button (Contact Section) --- */
+.whatsapp-btn.official-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem; /* Space between the logo and text */
+  background-color: var(--whatsapp-color);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.whatsapp-btn.official-wa:hover {
+  background-color: #1ebe57; /* Slightly darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* --- Scroll Animations --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, visibility;
+}
+
+.fade-in.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
