@@ -1,519 +1,222 @@
+<!--
+==========================================================================
+PROJECT: Ralya Holidays Website
+DEVELOPER: Manu Satyan (https://manusatyan.com)
+COPYRIGHT: © 2026 Ralya Holidays. All rights reserved.
+
+DISCLAIMER: This code was developed exclusively for Ralya Holidays by 
+Manu Satyan. Unauthorized copying, reproduction, or distribution of 
+this codebase, via any medium, is strictly prohibited.
+==========================================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ralya Holidays</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ralya Holidays</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
 
-  <meta name="title" content="Ralya Holidays | Explore. Experience." />
-  <meta name="description"
-    content="We craft unforgettable travel experiences. From thrilling mountain escapes to relaxing tropical retreats, let Ralya Holidays plan your perfect itinerary." />
-  <meta name="keywords"
-    content="travel agency, vacation packages, custom itineraries, mountain hiking, tropical resorts, cultural tours, Ralya Holidays, Ralya Travels" />
-  <meta name="author" content="Ralya Holidays" />
+    <!-- SEO & Meta Tags -->
+    <meta name="title" content="Ralya Holidays | Explore. Experience." />
+    <meta name="description"
+        content="We craft unforgettable travel experiences. From thrilling mountain escapes to relaxing tropical retreats, let Ralya Holidays plan your perfect itinerary." />
+    <meta name="keywords"
+        content="travel agency, vacation packages, custom itineraries, mountain hiking, tropical resorts, cultural tours, Ralya Holidays, Ralya Travels" />
+    <meta name="author" content="Ralya Holidays" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourusername.github.io/ralya-holidays/" />
-  <meta property="og:title" content="Ralya Holidays | Explore. Experience." />
-  <meta property="og:description"
-    content="We craft unforgettable travel experiences. From thrilling mountain escapes to relaxing tropical retreats, let us plan your perfect itinerary." />
-  <meta property="og:image" content="https://yourusername.github.io/ralya-holidays/assets/social-preview.png" />
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourusername.github.io/ralya-holidays/" />
+    <meta property="og:title" content="Ralya Holidays | Explore. Experience." />
+    <meta property="og:description"
+        content="We craft unforgettable travel experiences. From thrilling mountain escapes to relaxing tropical retreats, let us plan your perfect itinerary." />
+    <meta property="og:image" content="https://yourusername.github.io/ralya-holidays/assets/social-preview.png" />
 
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://yourusername.github.io/ralya-holidays/" />
-  <meta property="twitter:title" content="Ralya Holidays | Explore. Experience." />
-  <meta property="twitter:description"
-    content="We craft unforgettable travel experiences. From thrilling mountain escapes to relaxing tropical retreats, let us plan your perfect itinerary." />
-  <meta property="twitter:image" content="https://yourusername.github.io/ralya-holidays/assets/social-preview.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://yourusername.github.io/ralya-holidays/" />
+    <meta property="twitter:title" content="Ralya Holidays | Explore. Experience." />
+    <meta property="twitter:description"
+        content="We craft unforgettable travel experiences. From thrilling mountain escapes to relaxing tropical retreats, let us plan your perfect itinerary." />
+    <meta property="twitter:image" content="https://yourusername.github.io/ralya-holidays/assets/social-preview.png" />
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Playwrite+HU:wght@100..400&display=swap"
-    rel="stylesheet" />
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Playwrite+HU:wght@100..400&display=swap"
+        rel="stylesheet" />
+    <!-- AOS (Animate On Scroll) Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="logo">
-      <a href="#hero">RALYA HOLIDAYS</a>
-    </div>
-
-    <div class="nav-links">
-      <!-- <a href="#about">About Us</a> -->
-      <a href="#contact">Contact Us</a>
-    </div>
-
-    <div class="nav-actions">
-      <a href="https://wa.me/+918680813198" class="nav-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
-  <i class="ri-whatsapp-line" style="font-size: 1.5rem;"></i>
-</a>
-
-      <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Toggle navigation" />
-
-      <label for="menu-toggle" class="menu-icon">
-        <span class="navicon"></span>
-      </label>
-    </div>
-  </nav>
-
-  <section id="hero">
-    <div class="hero-content"></div>
-    <a href="#packages" class="bouncing-arrow" aria-label="Scroll down">&#x2193;</a>
-    <div class="about-stats-container" data-aos="fade-up">
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="ri-map-pin-user-fill"></i>
-          </div>
-          <h3><span class="counter" data-target="500">0</span>+</h3>
-          <p>Destinations</p>
+    <!-- ================= 1. NAVBAR ================= -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#hero">RALYA HOLIDAYS</a>
         </div>
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="ri-emotion-happy-line"></i>
-          </div>
-          <h3><span class="counter" data-target="15000">0</span>+</h3>
-          <p>Happy Travelers</p>
+
+        <div class="nav-links">
+            <!-- <a href="#about">About Us</a> -->
+            <a href="#contact">Contact Us</a>
         </div>
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="ri-calendar-check-fill"></i>
-          </div>
-          <h3><span class="counter" data-target="12">0</span>+</h3>
-          <p>Years Experience</p>
+
+        <div class="nav-actions">
+            <a href="https://wa.me/+918680813198" class="nav-whatsapp" aria-label="Chat on WhatsApp" target="_blank"
+                rel="noopener noreferrer">
+                <i class="ri-whatsapp-line" style="font-size: 1.5rem"></i>
+            </a>
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Toggle navigation" />
+            <label for="menu-toggle" class="menu-icon">
+                <span class="navicon"></span>
+            </label>
         </div>
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="ri-trophy-fill"></i>
-          </div>
-          <h3><span class="counter" data-target="25">0</span>+</h3>
-          <p>Awards Won</p>
-        </div>
-      </div>
-  </section>
+    </nav>
 
-  <section id="packages" class="fade-in">
-    <h2>Popular Destinations</h2>
+    <!-- ================= 2. HERO SECTION ================= -->
+    <section id="hero">
+        <div class="hero-content"></div>
+        <a href="#packages" class="bouncing-arrow" aria-label="Scroll down">&#x2193;</a>
 
-    <!-- NEW: Tabs Container -->
-    <div class="tabs-container">
-      <button class="tab-btn active" data-region="asia">Asia</button>
-      <button class="tab-btn" data-region="europe">Europe</button>
-      <button class="tab-btn" data-region="south-america">South America</button>
-      <div class="tab-indicator" id="tab-indicator"></div>
-    </div>
-
-    <!-- The carousel track is now empty, JS will fill it -->
-    <div class="carousel" id="auto-carousel">
-      <div class="carousel-track" id="track"></div>
-    </div>
-  </section>
-
-<!-- --- Combined About & Contact Section --- -->
-  <section class="fade-in split-section">
-    <div class="split-container">
-      
-      <!-- Left Column: About Us (1/3 Space) -->
-      <div id="about" class="about-column">
-        <h2>About Us</h2>
-        <div class="about-content">
-          <p>
-            Ralya Holidays is a premier travel agency dedicated to providing
-            exceptional travel experiences. With a team of experienced
-            professionals, we specialize in crafting personalized itineraries
-            that cater to your unique preferences and desires.
-          </p>
-          <br>
-          <p>
-            Our mission is to make travel accessible, enjoyable, and
-            unforgettable for everyone. We believe in the power of travel to
-            connect people, cultures, and nature.
-          </p>
-        </div>
-      </div>
-
-      <!-- Right Column: Contact Form (2/3 Space) -->
-      <div id="contact" class="contact-column">
-        <h2>Let's Plan Your Trip</h2>
-        <div class="contact-wrapper">
-          <form action="#" method="POST">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Tell us where you want to go..." rows="5" required></textarea>
-            <button type="submit">Send Inquiry</button>
-          </form>
-          <div class="divider"><span>OR</span></div>
-          <a href="https://wa.me/+918680813198" class="whatsapp-btn official-wa" target="_blank" rel="noopener noreferrer">
-            <i class="ri-whatsapp-line" style="font-size: 1.5rem;"></i>
-            <span>Chat with us on WhatsApp</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- <section id="faq" class="fade-in">
-    <h2>Frequently Asked Questions</h2>
-    <div class="accordion">
-      <div class="accordion-item active">
-        <button class="accordion-header">
-          What is included in the package prices?
-          <i class="ri-arrow-down-s-line icon"></i>
-        </button>
-        <div class="accordion-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header">
-          Can I customize my itinerary?
-          <i class="ri-arrow-down-s-line icon"></i>
-        </button>
-        <div class="accordion-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header">
-          What is your cancellation policy?
-          <i class="ri-arrow-down-s-line icon"></i>
-        </button>
-        <div class="accordion-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.</p>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-
-  <footer>
-    <div class="footer-content">
-      <div class="social-links">
-  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-    <i class="ri-facebook-circle-fill"></i>
-  </a>
-  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-    <i class="ri-instagram-line"></i>
-  </a>
-  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-    <i class="ri-twitter-x-line"></i>
-  </a>
-</div>
-
-      <div class="footer-text">
-        <p>&copy; 2026 Ralya Holidays. All rights reserved.</p>
-        <p class="developer-credit">
-          Developed by
-          <a href="https://manusatyan.com" target="_blank" rel="noopener noreferrer">Manu Satyan</a>.
-        </p>
-      </div>
-    </div>
-  </footer>
-  <script>
-    // 1. Destination Data
-    const destinationsData = {
-      asia: [
-        { img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80", title: "Bali Retreat", desc: "Experience the spiritual and tropical beauty of Indonesia." },
-        { img: "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?auto=format&fit=crop&w=600&q=80", title: "Kyoto Culture", desc: "Immerse yourself in the ancient traditions of Japan." },
-        { img: "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=600&q=80", title: "Thai Beaches", desc: "Relax on the pristine white sands of Phuket." },
-        { img: "https://images.unsplash.com/photo-1504457047772-27faf1c00561?auto=format&fit=crop&w=600&q=80", title: "Great Wall", desc: "Walk the historic steps of China's greatest wonder." },
-        { img: "https://images.unsplash.com/photo-1528913775512-42da0f7ebdd0?auto=format&fit=crop&w=600&q=80", title: "Vietnam Highlights", desc: "Cruise through Halong Bay and explore Hanoi." }
-      ],
-      europe: [
-        { img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=600&q=80", title: "Parisian Getaway", desc: "Discover the romance and art of the French capital." },
-        { img: "https://images.unsplash.com/photo-1515542622106-78b28af7815d?auto=format&fit=crop&w=600&q=80", title: "Roman Holiday", desc: "Step back in time in the historic streets of Rome." },
-        { img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=600&q=80", title: "Swiss Alps", desc: "Breathtaking mountain views and pristine lakes." },
-        { img: "https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=600&q=80", title: "Santorini Sunsets", desc: "Iconic white buildings and crystal clear waters." },
-        { img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&q=80", title: "London Explorer", desc: "Experience the vibrant culture and history of the UK." }
-      ],
-      "south-america": [
-        { img: "https://images.unsplash.com/photo-1526392060635-9d60198e114d?auto=format&fit=crop&w=600&q=80", title: "Machu Picchu", desc: "Hike the Inca Trail to the lost city in the clouds." },
-        { img: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=600&q=80", title: "Rio Carnival", desc: "Join the vibrant celebrations in Brazil." },
-        { img: "https://images.unsplash.com/photo-1518182170546-076616fdfaaf?auto=format&fit=crop&w=600&q=80", title: "Patagonia Trek", desc: "Explore the dramatic landscapes of Argentina and Chile." },
-        { img: "https://images.unsplash.com/photo-1533050186105-08197171e35d?auto=format&fit=crop&w=600&q=80", title: "Amazon Safari", desc: "Discover the unparalleled biodiversity of the rainforest." },
-        { img: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=600&q=80", title: "Galapagos Islands", desc: "Encounter unique wildlife found nowhere else on earth." }
-      ]
-    };
-
-    const carousel = document.getElementById("auto-carousel");
-    const track = document.getElementById("track");
-    const tabBtns = document.querySelectorAll(".tab-btn");
-    const tabIndicator = document.getElementById("tab-indicator");
-
-    let isPaused = false;
-    let animationFrameId;
-
-    // --- NEW: Variables for smooth acceleration ---
-    let isTabSwitching = false;
-    let currentSpeed = 1;       // Target top speed is 1px per frame
-    let scrollAccumulator = 0;  // Stores fractional pixels for smooth slow-motion
-    let tabSwitchTimer;         // Holds the delay timer
-
-    // 2. Simple Render Function
-    function renderCarousel(region) {
-      track.innerHTML = '';
-      
-      destinationsData[region].forEach(dest => {
-        const cardHTML = `
-          <div class="card">
-            <img src="${dest.img}" alt="${dest.title}" loading="lazy" />
-            <div class="card-content">
-              <h3>${dest.title}</h3>
-              <p>${dest.desc}</p>
+        <!-- Hero Stats Bar (Glassmorphism) -->
+        <div class="about-stats-container" data-aos="fade-up">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="ri-map-pin-user-fill"></i>
+                </div>
+                <h3><span class="counter" data-target="500">0</span>+</h3>
+                <p>Destinations</p>
             </div>
-          </div>
-        `;
-        track.insertAdjacentHTML('beforeend', cardHTML);
-      });
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="ri-emotion-happy-line"></i>
+                </div>
+                <h3><span class="counter" data-target="15000">0</span>+</h3>
+                <p>Happy Travelers</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="ri-calendar-check-fill"></i>
+                </div>
+                <h3><span class="counter" data-target="12">0</span>+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="ri-trophy-fill"></i>
+                </div>
+                <h3><span class="counter" data-target="25">0</span>+</h3>
+                <p>Awards Won</p>
+            </div>
+        </div>
+    </section>
 
-      const cards = Array.from(track.children);
-      cards.forEach((card) => {
-        const clone = card.cloneNode(true);
-        clone.setAttribute("aria-hidden", "true");
-        track.appendChild(clone);
-      });
+    <!-- ================= 3. POPULAR DESTINATIONS ================= -->
+    <section id="packages" class="fade-in">
+        <h2>Popular Destinations</h2>
 
-      carousel.scrollLeft = 0;
-    }
+        <!-- Tabs Container -->
+        <div class="tabs-container">
+            <button class="tab-btn active" data-region="asia">Asia</button>
+            <button class="tab-btn" data-region="europe">Europe</button>
+            <button class="tab-btn" data-region="south-america">
+                South America
+            </button>
+            <div class="tab-indicator" id="tab-indicator"></div>
+        </div>
 
-    // 3. Smooth Auto Scroll with Ease-In
-    function autoScroll() {
-      // Only scroll if not hovered and not currently in the delay period
-      if (!isPaused && !isTabSwitching) {
-        
-        // 1. Gradually accelerate currentSpeed up to 1
-        if (currentSpeed < 1) {
-          currentSpeed += 0.015; // Adjust this number to make the ease-in faster or slower
-          if (currentSpeed > 1) currentSpeed = 1; // Cap at max speed
-        }
+        <!-- Carousel Container -->
+        <div class="carousel" id="auto-carousel">
+            <div class="carousel-track" id="track"></div>
+        </div>
+    </section>
 
-        // 2. Accumulate fractional speed 
-        scrollAccumulator += currentSpeed;
+    <!-- ================= 4. SPLIT SECTION (ABOUT & CONTACT) ================= -->
+    <section class="fade-in split-section">
+        <div class="split-container">
+            <!-- Left Column: About Us -->
+            <div id="about" class="about-column">
+                <h2>About Us</h2>
+                <div class="about-content">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <br />
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
 
-        // 3. Only physically move the scrollbar when we have a full pixel
-        if (scrollAccumulator >= 1) {
-          const pixelsToMove = Math.floor(scrollAccumulator);
-          carousel.scrollLeft += pixelsToMove;
-          scrollAccumulator -= pixelsToMove; // Keep the leftover fraction
+            <!-- Right Column: Contact Form -->
+            <div id="contact" class="contact-column">
+                <h2>Let's Plan Your Trip</h2>
+                <div class="contact-wrapper">
+                    <form action="#" method="POST">
+                        <input type="text" placeholder="Your Name" required />
+                        <input type="email" placeholder="Your Email" required />
+                        <textarea placeholder="Tell us where you want to go..." rows="5" required></textarea>
+                        <button type="submit">Send Inquiry</button>
+                    </form>
+                    <div class="divider"><span>OR</span></div>
+                    <a href="https://wa.me/+918680813198" class="whatsapp-btn official-wa" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="ri-whatsapp-line" style="font-size: 1.5rem"></i>
+                        <span>Chat with us on WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          // 4. Seamless loop check
-          const halfWidth = Math.round(track.scrollWidth / 2);
-          if (carousel.scrollLeft >= halfWidth) {
-            carousel.scrollLeft -= halfWidth;
-          }
-        }
-      }
-      animationFrameId = requestAnimationFrame(autoScroll);
-    }
+    <!-- ================= 5. FOOTER ================= -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="ri-facebook-circle-fill"></i>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="ri-instagram-line"></i>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <i class="ri-twitter-x-line"></i>
+                </a>
+            </div>
 
-    // Function to slide and resize the indicator line
-    function updateTabIndicator(activeBtn) {
-      // Get the exact X position and width of the clicked button
-      const btnLeft = activeBtn.offsetLeft;
-      const btnWidth = activeBtn.offsetWidth;
-      
-      // Apply those measurements to the CSS of the line
-      tabIndicator.style.left = `${btnLeft}px`;
-      tabIndicator.style.width = `${btnWidth}px`;
-    }
+            <div class="footer-text">
+                <p>&copy; 2026 Ralya Holidays. All rights reserved.</p>
+                <p class="developer-credit">
+                    Developed by
+                    <a href="https://manusatyan.com" target="_blank" rel="noopener noreferrer">Manu Satyan</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
 
-    // 4. Clean Tab Clicks with Delay & Acceleration
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.classList.contains('active')) return;
+    <!-- ================= SCRIPTS ================= -->
+    <!-- AOS library linked BEFORE scripts.js for initialization -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        updateTabIndicator(btn);
-        
-        const selectedRegion = btn.getAttribute('data-region');
-        renderCarousel(selectedRegion);
-
-        // --- NEW: Trigger Delay & Reset Speed ---
-        isTabSwitching = true;          // Pause the scroll loop
-        currentSpeed = 0;               // Reset to a dead stop
-        scrollAccumulator = 0;          // Clear fractional pixels
-        clearTimeout(tabSwitchTimer);   // Clear previous timers if clicking rapidly
-
-        // Wait 800 milliseconds before allowing the cards to accelerate
-        tabSwitchTimer = setTimeout(() => {
-          isTabSwitching = false; // Release the brake, autoScroll will start accelerating
-        }, 100); 
-      });
-    });
-
-    // 5. Initialize
-    renderCarousel('asia');
-    // autoScroll();
-    // Position the line under the default active tab on load
-    const initialActiveTab = document.querySelector('.tab-btn.active');
-    updateTabIndicator(initialActiveTab);
-
-    // Keep the line perfectly aligned if the user resizes their browser window
-    window.addEventListener('resize', () => {
-      const currentActive = document.querySelector('.tab-btn.active');
-      if (currentActive) updateTabIndicator(currentActive);
-    });
-
-    // 6. Pause Interactions
-    carousel.addEventListener("mouseenter", () => (isPaused = true));
-    carousel.addEventListener("mouseleave", () => (isPaused = false));
-    carousel.addEventListener("touchstart", () => (isPaused = true), { passive: true });
-    carousel.addEventListener("touchend", () => {
-      setTimeout(() => { isPaused = false; }, 1500);
-    }, { passive: true });
-
-    // --- NEW: Start scroll only when in view ---
-    let hasStarted = false; // Flag to ensure we only kick it off once
-    const packagesSection = document.getElementById("packages");
-
-    const carouselObserver = new IntersectionObserver((entries) => {
-      // Check if the section has entered the viewport
-      if (entries[0].isIntersecting && !hasStarted) {
-        hasStarted = true; // Mark as started
-        autoScroll();      // Fire up the engine!
-        carouselObserver.disconnect(); // Stop observing to save memory
-      }
-    }, { 
-      threshold: 0.8 // Triggers when 80% of the section is visible on screen
-    });
-
-    if (packagesSection) {
-      carouselObserver.observe(packagesSection);
-    }
-  </script>
-  <script>
-    // Grab all elements that have the 'fade-in' class
-    const faders = document.querySelectorAll(".fade-in");
-
-    // Set the options for the observer
-    const appearOptions = {
-      threshold: 0.15, // Triggers when 15% of the element is visible
-      rootMargin: "0px 0px -50px 0px", // Triggers slightly before the bottom of the screen
-    };
-
-    // Create the Intersection Observer
-    const appearOnScroll = new IntersectionObserver(function (
-      entries,
-      observer
-    ) {
-      entries.forEach((entry) => {
-        // If the element is not yet intersecting the screen, do nothing
-        if (!entry.isIntersecting) {
-          return;
-        } else {
-          // If it is on screen, add the 'appear' class to trigger the CSS animation
-          entry.target.classList.add("appear");
-          // Stop observing the element so it doesn't fade out and back in if they scroll up
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-      appearOptions);
-
-    // Apply the observer to every element with the fade-in class
-    faders.forEach((fader) => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const headers = document.querySelectorAll('.accordion-header');
-
-      headers.forEach(header => {
-        header.addEventListener('click', () => {
-          const currentItem = header.parentElement;
-
-          // If clicked item is already active, do nothing to ensure one always stays open
-          if (currentItem.classList.contains('active')) return;
-
-          // Close all items
-          document.querySelectorAll('.accordion-item').forEach(item => {
-            item.classList.remove('active');
-          });
-
-          // Open the clicked item
-          currentItem.classList.add('active');
-        });
-      });
-    });
-  </script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      offset: 200,
-      duration: 800,
-      easing: 'ease-in-out-sine',
-      delay: 100,
-    });
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const statsSection = document.querySelector(".about-stats-container");
-      const counters = document.querySelectorAll(".counter");
-      let started = false; // Flag to ensure animation only runs once
-
-      function startCounting() {
-        counters.forEach((counter) => {
-          const target = +counter.getAttribute("data-target"); // Get target number
-          const duration = 3000; // Animation duration in ms (3 seconds)
-          // Calculate increment step based on duration assuming 60fps (16ms/frame)
-          const increment = target / (duration / 16);
-          let current = 0;
-
-          const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-              counter.innerText = Math.ceil(current); // Round up for smooth look
-              requestAnimationFrame(updateCounter);
-            } else {
-              counter.innerText = target; // Ensure final value is exact
-            }
-          };
-
-          updateCounter();
-        });
-      }
-
-      // Use Intersection Observer to detect when the section enters viewport
-      if (statsSection) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            // If section is in view AND hasn't started yet
-            if (entries[0].isIntersecting && !started) {
-              startCounting();
-              started = true;
-              observer.disconnect(); // Stop observing so it doesn't re-trigger
-            }
-          },
-          { threshold: 0.7 } // Trigger when 70% of the section is visible
-        );
-
-        observer.observe(statsSection);
-      }
-    });
-  </script>
+    <!-- Linking scripts.js file -->
+    <script src="scripts.js" defer></script>
 </body>
 
 </html>

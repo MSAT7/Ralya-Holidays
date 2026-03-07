@@ -1,897 +1,753 @@
-/* --- Base Variables & Reset --- */
+/*
+==========================================================================
+PROJECT: Ralya Holidays Website
+DEVELOPER: Manu Satyan (https://manusatyan.com)
+COPYRIGHT: © 2026 Ralya Holidays. All rights reserved.
+
+DISCLAIMER: This code was developed exclusively for Ralya Holidays by 
+Manu Satyan. Unauthorized copying, reproduction, or distribution of 
+this codebase, via any medium, is strictly prohibited.
+==========================================================================
+*/
+
+/* ==========================================================================
+   1. BASE VARIABLES & GLOBALS
+   ========================================================================== */
 :root {
-  --primary-color: #004E6A; 
-  --secondary-color: #39B5B0;
-  --accent-color: #61abff;
-  --whatsapp-color: #25D366;
-  --text-dark: #333333;
-  --bg-light: rgba(100, 146, 184, 0.15);
-  --white: #FFFFFF;
+    --primary-color: #004e6a;
+    --secondary-color: #39b5b0;
+    --accent-color: #61abff;
+    --whatsapp-color: #25d366;
+    --text-dark: #333333;
+    --bg-light: rgba(100, 146, 184, 0.15);
+    --white: #ffffff;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth; 
-  /* scroll-padding-top: 70px; Prevents the sticky nav from hiding section titles */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+        Arial, sans-serif;
 }
 
 body {
-  background-color: #f4f9fc; /* A very faint, lively bluish-white */
-  color: var(--text-dark);
+    background-color: #f4f9fc;
+    color: var(--text-dark);
 }
 
-/* --- Faint Background Image Layer --- */
+/* Faint Background Image Layer */
 body::before {
-  content: "";
-  position: fixed; /* Keeps the background perfectly still while scrolling */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  /* Update the filename below to match your uploaded image */
-  background: url('assets/background.png') center center / cover no-repeat;
-  opacity: 0.8; /* 15% opacity - adjust this lower (0.05) or higher (0.3) as needed */
-  z-index: -1; /* Pushes the image behind all your website content */
-  pointer-events: none; /* Ensures the image doesn't block you from clicking links */
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("assets/background.png") center center / cover no-repeat;
+    opacity: 0.8;
+    z-index: -1;
+    pointer-events: none;
 }
 
 section {
-  padding: 4rem 1.5rem;
+    padding: 4rem 1.5rem;
 }
 
-/* --- Alternating Section Backgrounds (Updated for Transparency) --- */
-
-/* Semi-transparent white so the background image shows through */
+/* Alternating Section Backgrounds */
 section:not(#hero):nth-of-type(odd) {
-  background-color: rgba(255, 255, 255, 0.65); 
+    background-color: rgba(255, 255, 255, 0.65);
 }
 
-/* Semi-transparent blue-grey gradient */
 section:not(#hero):nth-of-type(even) {
-  background: linear-gradient(135deg, rgba(100, 146, 184, 0.08) 0%, rgba(100, 146, 184, 0.18) 100%);
+    background: linear-gradient(135deg,
+            rgba(100, 146, 184, 0.08) 0%,
+            rgba(100, 146, 184, 0.18) 100%);
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.75rem;
-  font-family: Expletus Sans;
-  color: var(--primary-color);
-}
-
-/* --- Static Navbar --- */
-.navbar {
-  position: absolute; /* Changed from sticky so it scrolls away */
-  top: 0;
-  left: 0;
-  width: 100%; /* Ensures it spans the full screen when absolute */
-  z-index: 1000;
-  
-  /* Transparent background to blend into the hero image */
-  background-color: transparent; 
-  border-bottom: none; 
-  
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-}
-
-.navbar .logo a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-family: Expletus Sans;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.navbar .nav-links {
-  display: flex;
-  gap: 1.5rem;
-  /* Pushes the links to the right side */
-  margin-left: auto; 
-  /* Adds a little breathing room between the links and the WhatsApp button */
-  margin-right: 1.5rem;
-}
-
-.navbar .nav-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: Expletus Sans;
-  transition: color 0.3s ease;
-}
-
-.navbar .nav-links a:hover {
-  color: var(--accent-color);
-}
-
-/* --- 1. Hero Section --- */
-#hero {
-  /* Fallback for older browsers */
-  height: 100vh;
-  /* Modern fix: dynamically adjusts to mobile browser toolbars */
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative; /* Crucial: This anchors the absolute stats bar below */
-  color: var(--white);
-  padding-bottom: 8rem; /* Add extra space at the bottom so the stats don't cover your text/buttons */
-  
-  /* Mobile Portrait Wallpaper - Update the filename here */
-  background: linear-gradient(rgba(0,78,106,0), rgba(0,78,106,0)), url('assets/banner_image_vertical.png') no-repeat center center/cover;
-}
-
-#hero h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Bouncing Arrow */
-.bouncing-arrow {
-  position: absolute;
-  bottom: 4rem;
-  font-size: 2.5rem;
-  color: var(--white);
-  text-decoration: none;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-15px); }
-  60% { transform: translateY(-7px); }
-}
-
-/* --- Destination Tabs (Modern Underline) --- */
-.tabs-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem; /* Spacing between the text tabs */
-  margin-bottom: 2rem;
-  position: relative; /* Crucial: Keeps the absolute indicator constrained to this box */
-  /* border-bottom: 2px solid #e5e7eb; Creates a faint grey track for the line to sit on */
-  padding-bottom: 0.5rem; /* Space between the text and the line */
-}
-
-.tab-btn {
-  padding: 0 0.5rem;
-  background: transparent;
-  color: #6b7280; /* Lighter grey for unselected tabs */
-  border: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  position: relative;
-  z-index: 1; /* Keeps the text above the line */
-}
-
-.tab-btn:hover {
-  color: var(--primary-color);
-}
-
-.tab-btn.active {
-  color: var(--primary-color);
-  font-weight: 700; /* Bolds the active text */
-}
-
-/* The Sliding Line */
-.tab-indicator {
-  position: absolute;
-  bottom: -2px; /* Aligns exactly over the container's bottom border */
-  left: 0;
-  height: 3px;
-  background-color: var(--primary-color);
-  border-radius: 3px;
-  /* The magic that makes it glide and resize automatically */
-  transition: left 0.3s ease-in-out, width 0.3s ease-in-out; 
-}
-
-/* --- Smooth Crossfade for Carousel --- */
-.carousel-track {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-}
-
-.tab-animate {
-  animation: tabFadeIn 0.4s ease-out forwards;
-}
-
-/* --- 2. Packages Carousel --- */
-.carousel {
-  overflow-x: auto; /* Restores manual swiping! */
-  padding-bottom: 1rem;
-  width: 100%;
-  scrollbar-width: none; /* Hides scrollbar on Firefox */
-  scroll-behavior: auto; /* Disables smooth scroll for manual swiping, keeps it for anchor links */
-}
-
-.carousel::-webkit-scrollbar {
-  display: none; /* Hides scrollbar on Chrome/Safari/Edge */
-}
-
-.carousel-track {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  /* Removed the CSS animation */
-}
-
-/* (Make sure you delete the .carousel:hover and @keyframes scroll-infinite rules that were here before) */
-
-.card {
-  min-width: 70vw; 
-  max-width: 300px; 
-  flex-shrink: 0; 
-  background-color: var(--white);
-  padding: 0; 
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  border-top: 4px solid var(--accent-color);
-  overflow: hidden; 
-  display: flex;
-  flex-direction: column;
-}
-
-.card img {
-  width: 100%;
-  height: 260px; 
-  object-fit: cover; 
-}
-
-.card-content {
-  padding: 1.5rem;
-}
-
-.card-content h3 {
-  margin-bottom: 0.5rem;
-  color: var(--primary-color);
-}
-
-/* The mathematical magic that creates a perfect, seamless loop */
-@keyframes scroll-infinite {
-  0% { transform: translateX(0); }
-  100% { 
-    /* Shifts left by exactly one set of 6 cards + gaps */
-    transform: translateX(calc(-50% - 0.75rem)); 
-  }
-}
-
-@media (max-width: 767px) {
-  .carousel {
-    /* Make the container wider than the section by exactly the padding amount */
-    width: calc(100% + 3rem); 
-    /* Pull it to the left to touch the screen edge */
-    margin-left: -1.5rem; 
-  }
-}
-
-/* Update Media Query for Desktop Card Width */
-@media (min-width: 768px) {
-  .card {
-    min-width: 320px; 
-  }
-}
-
-.card h3 {
-  margin-bottom: 0.5rem;
-  color: var(--primary-color);
-}
-
-/* --- 3. Combined Split Section (About & Contact) --- */
-.split-container {
-  max-width: 1400px; /* Increased from 1200px to reduce side margins */
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1.7fr; /* 1/3 and 2/3 split */
-  gap: 4rem;
-  align-items: start; /* Keeps titles aligned at the top */
-}
-
-.split-container h2 {
-  text-align: left;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  color: var(--primary-color);
-  text-align: center; /* Changed from left to center */
-}
-
-.about-column {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Spans the full height of the contact form's row */
-}
-
-/* This pushes the about-content into the vertical center 
-   without moving the H2 title above it */
-.about-content {
-  margin-top: auto;
-  margin-bottom: auto;
-  padding: 2rem 0; /* Adds a little breathing room */
-  text-align: center;
-  line-height: 1.8;
-  font-size: 1.1rem;
-  color: var(--text-dark);
-}
-
-/* --- Premium Contact Form Card --- */
-.contact-wrapper {
-  width: 100%;
-  max-width: none; /* Kills the old 500px limit */
-  background: var(--white);
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft card shadow */
-  border: 1px solid rgba(0,0,0,0.02);
-}
-
-.contact-wrapper form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem; /* Perfect spacing between inputs */
-}
-
-.contact-wrapper input, 
-.contact-wrapper textarea {
-  width: 100%;
-  padding: 1rem 1.2rem;
-  background-color: #f8fafc; /* Faint grey so it pops off the white card */
-  border: 1.5px solid #e5e7eb;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 1rem;
-  color: var(--text-dark);
-  transition: all 0.3s ease;
-}
-
-.contact-wrapper input:focus, 
-.contact-wrapper textarea:focus {
-  outline: none;
-  border-color: var(--secondary-color);
-  box-shadow: 0 0 0 4px rgba(57, 181, 176, 0.15); 
-  background-color: var(--white);
-}
-
-/* Polished Submit Button */
-.contact-wrapper button {
-  width: 100%;
-  padding: 1.2rem;
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 0.5rem;
-}
-
-.contact-wrapper button:hover {
-  background-color: var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 78, 106, 0.25);
-}
-
-/* Dividers & WhatsApp Button */
-.divider {
-  text-align: center;
-  margin: 1.5rem 0;
-  position: relative;
-}
-
-.divider::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  border-top: 1px solid #e5e7eb;
-  z-index: 1;
-}
-
-.divider span {
-  background-color: var(--white); /* Matches the card background */
-  padding: 0 1rem;
-  position: relative;
-  z-index: 2;
-  color: #9ca3af;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.whatsapp-btn.official-wa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background-color: var(--whatsapp-color);
-  color: var(--white);
-  text-decoration: none;
-  padding: 1.2rem;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.whatsapp-btn.official-wa:hover {
-  background-color: #1ebe57; 
-  transform: translateY(-2px); 
-}
-
-/* --- Mobile Stacking Adjustments --- */
-@media (max-width: 900px) {
-  .split-container {
-    /* Force the grid to a single column */
-    grid-template-columns: 1fr !important; 
-    gap: 3rem;
-    align-items: start;
-    padding: 0 1rem; /* Adds small side padding for mobile screens */
-  }
-
-  .about-column {
-    height: auto;
-    width: 100%;
-  }
-
-  .about-content {
-    margin: 0 auto 2rem auto;
     text-align: center;
-    max-width: 100%;
-  }
-
-  .contact-column {
-    width: 100%;
-  }
-
-  .contact-wrapper {
-    padding: 1.5rem 1rem;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  /* 3. Optional: ensure the form inputs feel spacious but fit well */
-  .contact-wrapper input, 
-  .contact-wrapper textarea {
-    padding: 0.8rem; /* Slightly smaller padding for mobile to save space */
-  }
-}
-
-@media (max-width: 900px) {
-  .about-column {
-    height: auto;
-  }
-  
-  .about-content {
-    margin-top: 0;
     margin-bottom: 2rem;
-  }
+    font-size: 1.75rem;
+    font-family: Expletus Sans;
+    color: var(--primary-color);
 }
 
-/* --- 5. FAQ Accordion --- */
-/* Container: Fixed height prevents page shifting, Flexbox allows active item to stretch */
-.accordion {
+/* ==========================================================================
+   2. NAVBAR
+   ========================================================================== */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 300px; /* Adjust this to fit your specific page design */
-    border: 1px solid #dcdfe3;
-    border-radius: 4px;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.accordion-item {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #dcdfe3;
-}
-
-.accordion-item:last-child {
+    z-index: 1000;
+    background-color: transparent;
     border-bottom: none;
-}
-
-/* The active item grows to fill the remaining fixed height */
-.accordion-item.active {
-    flex: 1;
-    min-height: 0; 
-}
-
-.accordion-header {
-    width: 100%;
-    background: #ffffff;
-    padding: 1.2rem 1.5rem;
-    font-size: 1rem;
-    color: #1a2b3c;
-    border: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    text-align: left;
+    padding: 1rem 1.5rem;
 }
 
-/* Active header styling */
-.accordion-item.active .accordion-header {
-    background: rgba(6, 109, 195, 0.85); /* Matches the light blue from your design */
+.navbar .logo a {
     color: var(--white);
-    border-bottom: 1px solid #dcdfe3;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-family: Expletus Sans;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
-.accordion-header .icon {
-    font-size: 1.5rem;
-    color: #1a2b3c;
-    transition: transform 0.3s ease;
-}
-
-/* Rotate the chevron when active */
-.accordion-item.active .icon {
-    transform: rotate(180deg);
-}
-
-/* Content area styling */
-.accordion-content {
-    display: none;
-    padding: 1.2rem 1.5rem;
-    color: #1a2b3c;
-    line-height: 1.5;
-    background: #ffffff;
-    overflow-y: auto; /* Adds a scrollbar ONLY if content overflows the fixed height */
-}
-
-.accordion-item.active .accordion-content {
-    display: block;
-    flex: 1;
-}
-
-
-/* .accordion-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-details {
-  background-color: var(--white);
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-summary {
-  font-weight: bold;
-  cursor: pointer;
-  padding-bottom: 0.5rem;
-  list-style: none; 
-  color: var(--primary-color);
-}
-summary::-webkit-details-marker {
-  display: none;
-}
-
-details p {
-  padding-top: 0.5rem;
-  border-top: 1px solid #eee;
-  line-height: 1.5;
-  color: #555;
-} */
-
-/* ================= STATS BAR CSS ================= */
-/* --- Floating Glass Stats Card (Desktop: Bottom Right) --- */
-.about-stats-container {
-  position: absolute;
-  bottom: 2rem; 
-  right: 2rem;  
-  width: auto;
-  min-width: 320px;
-  
-  /* 2x2 Grid Setup */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 2rem;
-  text-align: center;
-  
-  /* Floating Glass Effect */
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px; 
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
-  
-  z-index: 10;
-}
-
-.stat-icon {
-  color: var(--white); /* Makes the icons pop against the glass */
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.stat-item h3 {
-  color: var(--white);
-  font-size: 2.5rem;
-  margin-bottom: 0.2rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-}
-
-.stat-item p {
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 767px) {
-  .about-stats-container {
-    /* Position Dead Center */
-    top: 50%;
-    left: 50%;
-    bottom: auto; 
-    right: auto;  
-    transform: translate(-50%, -50%); 
-    
-    width: 90%; 
+.navbar .nav-links {
+    display: flex;
     gap: 1.5rem;
-    padding: 1.5rem;
-  }
-  
-  .stat-icon {
-    font-size: 1.5rem;
-  }
-
-  .stat-item h3 {
-    font-size: 1.8rem;
-  }
-  
-  .stat-item p {
-    font-size: 0.8rem;
-  }
+    margin-left: auto;
+    margin-right: 1.5rem;
 }
 
-/* --- Footer --- */
-footer {
-  position: relative; /* Crucial: Keeps the background image contained strictly inside the footer */
-  overflow: hidden;   /* Prevents the image from spilling out */
-  background-color: var(--primary-color); /* Keeps your solid dark blue base */
-  color: var(--white);
-  padding: 3rem 1.5rem 2rem;
-  text-align: center;
+.navbar .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: Expletus Sans;
+    transition: color 0.3s ease;
 }
 
-/* The Faint Background Image Layer */
-footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Replace with your actual horizontal image filename */
-  background: url('assets/footer_bg.png') center bottom / cover no-repeat;
-  opacity: 0.2; /* Adjust this to make it barely visible (e.g., 0.05 to 0.2) */
-  pointer-events: none;
-  z-index: 0; /* Drops the image beneath the text */
+.navbar .nav-links a:hover {
+    color: var(--accent-color);
 }
 
-.footer-content {
-  position: relative; /* Breathes life into the z-index below */
-  z-index: 1; /* Pulls all your text and icons up ABOVE the faint image layer */
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* --- Updated Social Media Links (Icons) --- */
-.social-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.social-links a {
-  display: inline-flex;
-  font-size: 1.8rem;
-  color: var(--white);
-  transition: transform 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-}
-
-.social-links a:hover {
-  transform: translateY(-4px); 
-  color: var(--accent-color); 
-}
-
-
-
-.footer-text p {
-  margin-bottom: 0.5rem;
-  font-size: 1 rem;
-  color: rgba(255, 255, 255, 0.8); 
-}
-.developer-credit {
-  font-size: 0.6rem;
-}
-.developer-credit a {
-  color: var(--secondary-color); 
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-.developer-credit a:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
-}
-
-/* --- Media Queries --- */
-
-/* Desktop Adjustments */
-@media (min-width: 768px) {
-  #hero {
-    /* Desktop Landscape Wallpaper - Update the filename here */
-    background: linear-gradient(rgba(0,78,106,0), rgba(0, 78, 106, 0)), url('assets/banner_image_horizontal.png') no-repeat center center/cover;
-  }
-  
- card {
-    min-width: 280px; /* Reduced from 320px for better vertical proportions */
-  }
-  
-  .carousel {
-    justify-content: center; 
-  }
-}
-
-/* Mobile Navigation & Hamburger Menu */
-.menu-checkbox,
-.menu-icon {
-  display: none;
-}
-
-@media (max-width: 767px) {
-  .menu-icon {
+/* WhatsApp Icon & Actions Container */
+.nav-actions {
     display: flex;
     align-items: center;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-  }
-
-  .navicon {
-    background: var(--white);
-    display: block;
-    height: 2px;
-    width: 24px;
-    position: relative;
-    transition: background 0.2s ease-out;
-  }
-
-  .navicon::before,
-  .navicon::after {
-    background: var(--white);
-    content: '';
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    transition: all 0.2s ease-out;
-  }
-
-  .navicon::before { top: -8px; }
-  .navicon::after { top: 8px; }
-
-  .navbar .nav-links {
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    /* Glass effect for mobile menu */
-    background-color: rgba(6, 109, 195, 0.85); /* Slightly darker for readability */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    
-    flex-direction: column;
-    gap: 0;
-    max-height: 0; 
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-
-  .navbar .nav-links a {
-    padding: 1.2rem;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: block;
-    width: 100%;
-  }
-
-  .navbar:has(.menu-checkbox:checked) .nav-links {
-    max-height: 250px;
-  }
-
-  .menu-checkbox:checked ~ .menu-icon .navicon {
-    background: transparent;
-  }
-  .menu-checkbox:checked ~ .menu-icon .navicon::before {
-    transform: rotate(-45deg);
-    top: 0;
-  }
-  .menu-checkbox:checked ~ .menu-icon .navicon::after {
-    transform: rotate(45deg);
-    top: 0;
-  }
-}
-
-/* --- WhatsApp Icon & Actions Container (Navbar) --- */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    gap: 1rem;
 }
 
 .nav-whatsapp {
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  transition: color 0.3s ease;
-  text-decoration: none;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .nav-whatsapp:hover {
-  color: var(--whatsapp-color);
+    color: var(--whatsapp-color);
 }
 
-/* --- Official WhatsApp Button (Contact Section) --- */
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+#hero {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: var(--white);
+    padding-bottom: 8rem;
+    background: linear-gradient(rgba(0, 78, 106, 0), rgba(0, 78, 106, 0)),
+        url("assets/banner_image_vertical.png") no-repeat center center/cover;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.bouncing-arrow {
+    position: absolute;
+    bottom: 4rem;
+    font-size: 2.5rem;
+    color: var(--white);
+    text-decoration: none;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-15px);
+    }
+
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Floating Glass Stats Card (Desktop: Bottom Right) */
+.about-stats-container {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: auto;
+    min-width: 320px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.stat-icon {
+    color: var(--white);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-item h3 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 0.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-item p {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   4. DESTINATIONS CAROUSEL & TABS
+   ========================================================================== */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+    padding: 0 0.5rem;
+    background: transparent;
+    color: #6b7280;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    font-weight: 700;
+}
+
+.tab-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.carousel {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    width: 100%;
+    scrollbar-width: none;
+    scroll-behavior: auto;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+}
+
+.card {
+    min-width: 70vw;
+    max-width: 300px;
+    flex-shrink: 0;
+    background-color: var(--white);
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid var(--accent-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+@keyframes tabFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-animate {
+    animation: tabFadeIn 0.4s ease-out forwards;
+}
+
+/* ==========================================================================
+   5. COMBINED SPLIT SECTION (ABOUT & CONTACT)
+   ========================================================================== */
+.split-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1.7fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.split-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.about-column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.about-content {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 2rem 0;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+/* Premium Contact Form Card */
+.contact-wrapper {
+    width: 100%;
+    max-width: none;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.contact-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.contact-wrapper input,
+.contact-wrapper textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background-color: #f8fafc;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.contact-wrapper input:focus,
+.contact-wrapper textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(57, 181, 176, 0.15);
+    background-color: var(--white);
+}
+
+.contact-wrapper button {
+    width: 100%;
+    padding: 1.2rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.contact-wrapper button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 78, 106, 0.25);
+}
+
+.divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #e5e7eb;
+    z-index: 1;
+}
+
+.divider span {
+    background-color: var(--white);
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 .whatsapp-btn.official-wa {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centers content horizontally */
-  text-align: center;      /* Ensures text alignment is centered */
-  gap: 0.75rem; /* Space between the logo and text */
-  background-color: var(--whatsapp-color);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.75rem;
+    background-color: var(--whatsapp-color);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .whatsapp-btn.official-wa:hover {
-  background-color: #1ebe57; /* Slightly darker green on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+    background-color: #1ebe57;
+    transform: translateY(-2px);
 }
 
-/* --- Scroll Animations --- */
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+footer {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 3rem 1.5rem 2rem;
+    text-align: center;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("assets/footer_bg.png") center bottom / cover no-repeat;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: inline-flex;
+    font-size: 1.8rem;
+    color: var(--white);
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    transform: translateY(-4px);
+    color: var(--accent-color);
+}
+
+.footer-text p {
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.developer-credit {
+    font-size: 0.3rem;
+}
+
+.developer-credit a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. ANIMATIONS
+   ========================================================================== */
 .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, visibility;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, visibility;
 }
 
 .fade-in.appear {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES (RESPONSIVE)
+   ========================================================================== */
+
+/* Desktop Adjustments */
+@media (min-width: 768px) {
+    #hero {
+        background: linear-gradient(rgba(0, 78, 106, 0), rgba(0, 78, 106, 0)),
+            url("assets/banner_image_horizontal.png") no-repeat center center/cover;
+    }
+
+    .card {
+        min-width: 280px;
+    }
+
+    .carousel {
+        justify-content: center;
+    }
+}
+
+/* Mobile Setup (Menus & Elements) */
+.menu-checkbox,
+.menu-icon {
+    display: none;
+}
+
+@media (max-width: 767px) {
+
+    /* Hero Stats Adjustments */
+    .about-stats-container {
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        right: auto;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .stat-icon {
+        font-size: 1.5rem;
+    }
+
+    .stat-item h3 {
+        font-size: 1.8rem;
+    }
+
+    .stat-item p {
+        font-size: 0.8rem;
+    }
+
+    /* Carousel Spacing */
+    .carousel {
+        width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+    }
+
+    /* Hamburger Navigation */
+    .menu-icon {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+    }
+
+    .navicon {
+        background: var(--white);
+        display: block;
+        height: 2px;
+        width: 24px;
+        position: relative;
+        transition: background 0.2s ease-out;
+    }
+
+    .navicon::before,
+    .navicon::after {
+        background: var(--white);
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        transition: all 0.2s ease-out;
+    }
+
+    .navicon::before {
+        top: -8px;
+    }
+
+    .navicon::after {
+        top: 8px;
+    }
+
+    .navbar .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(6, 109, 195, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .nav-links a {
+        padding: 1.2rem;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
+        width: 100%;
+    }
+
+    .navbar:has(.menu-checkbox:checked) .nav-links {
+        max-height: 250px;
+    }
+
+    .menu-checkbox:checked~.menu-icon .navicon {
+        background: transparent;
+    }
+
+    .menu-checkbox:checked~.menu-icon .navicon::before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    .menu-checkbox:checked~.menu-icon .navicon::after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+}
+
+/* Tablet / Split Section Adjustments (Stacks content up to 900px) */
+@media (max-width: 900px) {
+    .split-container {
+        grid-template-columns: 1fr !important;
+        gap: 3rem;
+        align-items: start;
+        padding: 0 1rem;
+    }
+
+    .about-column {
+        height: auto;
+        width: 100%;
+    }
+
+    .about-content {
+        margin: 0 auto 2rem auto;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .contact-column {
+        width: 100%;
+    }
+
+    .contact-wrapper {
+        padding: 1.5rem 1rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .contact-wrapper input,
+    .contact-wrapper textarea {
+        padding: 0.8rem;
+    }
 }
