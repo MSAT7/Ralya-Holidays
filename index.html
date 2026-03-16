@@ -46,10 +46,11 @@ this codebase, via any medium, is strictly prohibited.
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Playwrite+HU:wght@100..400&display=swap"
-        rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playwrite+HU:wght@100..400&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
     <!-- AOS (Animate On Scroll) Library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
@@ -58,7 +59,10 @@ this codebase, via any medium, is strictly prohibited.
     <!-- ================= 1. NAVBAR ================= -->
     <nav class="navbar">
         <div class="logo">
-            <a href="#hero">RALYA HOLIDAYS</a>
+            <a href="#hero">
+                <img src="assets/navbar_logo.png" alt="Ralya Holidays Logo" class="nav-logo-img">
+                <span class="sr-only">RALYA HOLIDAYS</span>
+            </a>
         </div>
 
         <div class="nav-links">
@@ -81,24 +85,10 @@ this codebase, via any medium, is strictly prohibited.
     <!-- ================= 2. HERO SECTION ================= -->
     <section id="hero">
         <div class="hero-content"></div>
-        <a href="#packages" class="bouncing-arrow" aria-label="Scroll down">&#x2193;</a>
+        <a href="#popular" class="bouncing-arrow" aria-label="Scroll down">&#x2193;</a>
 
         <!-- Hero Stats Bar (Glassmorphism) -->
-        <div class="about-stats-container" data-aos="fade-up">
-            <div class="stat-item">
-                <div class="stat-icon">
-                    <i class="ri-map-pin-user-fill"></i>
-                </div>
-                <h3><span class="counter" data-target="500">0</span>+</h3>
-                <p>Destinations</p>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">
-                    <i class="ri-emotion-happy-line"></i>
-                </div>
-                <h3><span class="counter" data-target="15000">0</span>+</h3>
-                <p>Happy Travelers</p>
-            </div>
+        <div class="about-stats-container">
             <div class="stat-item">
                 <div class="stat-icon">
                     <i class="ri-calendar-check-fill"></i>
@@ -106,19 +96,89 @@ this codebase, via any medium, is strictly prohibited.
                 <h3><span class="counter" data-target="12">0</span>+</h3>
                 <p>Years Experience</p>
             </div>
+
             <div class="stat-item">
                 <div class="stat-icon">
-                    <i class="ri-trophy-fill"></i>
+                    <i class="ri-emotion-happy-line"></i>
                 </div>
-                <h3><span class="counter" data-target="25">0</span>+</h3>
-                <p>Awards Won</p>
+                <h3><span class="counter" data-target="15000">0</span>+</h3>
+                <p>Happy Travelers</p>
+            </div>
+
+            <div class="stat-item google-review-item"
+                style="display: flex; align-items: center; justify-content: center;">
+                <a href="PASTE_YOUR_SHORT_URL_HERE" target="_blank" class="google-pill-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px">
+                        <path fill="#EA4335"
+                            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.7 17.74 9.5 24 9.5z" />
+                        <path fill="#4285F4"
+                            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                        <path fill="#FBBC05"
+                            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                        <path fill="#34A853"
+                            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.2-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                    </svg>
+                    <span class="pill-btn-text">Review us on Google</span>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- ================= 3. POPULAR DESTINATIONS ================= -->
-    <section id="packages" class="fade-in">
+    <section id="popular" class="fade-in">
         <h2>Popular Destinations</h2>
+
+        <div class="popular-flex-container">
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80"
+                    alt="Dubai Escape" loading="lazy" />
+                <div class="featured-content">
+                    <h3>Dubai Escape</h3>
+                    <p>Luxury & desert adventures.</p>
+                    <a href="https://wa.me/+918680813198?text=Hi,%20I'm%20interested%20in%20learning%20more%20about%20your%20Dubai%20Escape%20Itinerary"
+                        target="_blank" rel="noopener noreferrer" class="featured-btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=600&q=80"
+                    alt="Venice Romance" loading="lazy" />
+                <div class="featured-content">
+                    <h3>Venice Romance</h3>
+                    <p>Sail the historic canals.</p>
+                    <a href="https://wa.me/+918680813198?text=Hi,%20I'm%20interested%20in%20learning%20more%20about%20your%20Venice%20Romance%20Itinerary"
+                        target="_blank" rel="noopener noreferrer" class="featured-btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=600&q=80"
+                    alt="Swiss Alps" loading="lazy" />
+                <div class="featured-content">
+                    <h3>Swiss Alps</h3>
+                    <p>Pristine lakes & peaks.</p>
+                    <a href="https://wa.me/+918680813198?text=Hi,%20I'm%20interested%20in%20learning%20more%20about%20your%20Swiss%20Alps%20Itinerary"
+                        target="_blank" rel="noopener noreferrer" class="featured-btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+                    alt="Maldives Bliss" loading="lazy" />
+                <div class="featured-content">
+                    <h3>Maldives Bliss</h3>
+                    <p>Your private island escape.</p>
+                    <a href="https://wa.me/+918680813198?text=Hi,%20I'm%20interested%20in%20learning%20more%20about%20your%20Maldives%20Bliss%20Itinerary"
+                        target="_blank" rel="noopener noreferrer" class="featured-btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4. OTHER DESTINATIONS ================= -->
+
+    <section id="packages" class="fade-in">
+        <h2>Other Destinations</h2>
 
         <!-- Tabs Container -->
         <div class="tabs-container">
@@ -136,7 +196,81 @@ this codebase, via any medium, is strictly prohibited.
         </div>
     </section>
 
-    <!-- ================= 4. SPLIT SECTION (ABOUT & CONTACT) ================= -->
+    <!-- ================= 5. 5-STEP PROCESS ================= -->
+
+    <section id="process" class="fade-in">
+        <h2>Five Steps. That's It.</h2>
+
+        <div class="process-container">
+            <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+                <div class="step-progress">
+                    <div class="progress-node current">01</div>
+                    <div class="progress-node future"></div>
+                    <div class="progress-node future"></div>
+                    <div class="progress-node future"></div>
+                    <div class="progress-node future"></div>
+                </div>
+                <div class="step-icon"><i class="ri-message-3-line"></i></div>
+                <h3>Initial Enquiry</h3>
+                <p>Tell us your dream destination, travel dates, and preferences via WhatsApp or our contact form.</p>
+            </div>
+
+            <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-progress">
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node current">02</div>
+                    <div class="progress-node future"></div>
+                    <div class="progress-node future"></div>
+                    <div class="progress-node future"></div>
+                </div>
+                <div class="step-icon"><i class="ri-draft-line"></i></div>
+                <h3>Custom Itinerary</h3>
+                <p>Our experts craft a personalized travel plan tailored specifically to your budget and travel style.
+                </p>
+            </div>
+
+            <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-progress">
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node current">03</div>
+                    <div class="progress-node future"></div>
+                    <div class="progress-node future"></div>
+                </div>
+                <div class="step-icon"><i class="ri-discuss-line"></i></div>
+                <h3>Review & Refine</h3>
+                <p>We tweak and perfect the details together until you are 100% thrilled with every aspect.</p>
+            </div>
+
+            <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-progress">
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node current">04</div>
+                    <div class="progress-node future"></div>
+                </div>
+                <div class="step-icon"><i class="ri-checkbox-circle-line"></i></div>
+                <h3>Secure Booking</h3>
+                <p>We handle all the flights, hotels, and activities. You just give the green light and relax.</p>
+            </div>
+
+            <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                <div class="step-progress">
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node completed"><i class="ri-check-line"></i></div>
+                    <div class="progress-node current">05</div>
+                </div>
+                <div class="step-icon"><i class="ri-flight-takeoff-line"></i></div>
+                <h3>Time to Travel</h3>
+                <p>Pack your bags! We provide 24/7 support while you enjoy your seamless, unforgettable holiday.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 5. SPLIT SECTION (ABOUT & CONTACT) ================= -->
     <section class="fade-in split-section">
         <div class="split-container">
             <!-- Left Column: About Us -->
@@ -186,7 +320,111 @@ this codebase, via any medium, is strictly prohibited.
         </div>
     </section>
 
-    <!-- ================= 5. FOOTER ================= -->
+    <!-- ================= 6. REVIEWS ================= -->
+
+    <section id="reviews" class="fade-in">
+        <div class="reviews-header">
+            <h2>What Our Clients Say...</h2>
+            <button id="open-review-modal" class="leave-review-btn">Leave a Review</button>
+        </div>
+
+        <div class="reviews-slider-wrapper" data-aos="fade-up">
+            <div class="reviews-container" id="reviews-track">
+                <div class="review-card">
+                    <i class="ri-double-quotes-l quote-bg"></i>
+                    <div class="review-stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+                    <h4 class="review-author">- Person 1</h4>
+                    <span class="review-destination">Niagara Falls</span>
+                </div>
+
+                <div class="review-card">
+                    <i class="ri-double-quotes-l quote-bg"></i>
+                    <div class="review-stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+                    <h4 class="review-author">- Person 2</h4>
+                    <span class="review-destination">Bali Retreat</span>
+                </div>
+
+                <div class="review-card">
+                    <i class="ri-double-quotes-l quote-bg"></i>
+                    <div class="review-stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-line"></i>
+                    </div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+                    <h4 class="review-author">- Person 3</h4>
+                    <span class="review-destination">European Explorer</span>
+                </div>
+
+                <div class="review-card">
+                    <i class="ri-double-quotes-l quote-bg"></i>
+                    <div class="review-stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-line"></i><i class="ri-star-line"></i>
+                    </div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt."</p>
+                    <h4 class="review-author">- Person 4</h4>
+                    <span class="review-destination">Dubai Escape</span>
+                </div>
+
+                <div class="review-card">
+                    <i class="ri-double-quotes-l quote-bg"></i>
+                    <div class="review-stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-line"></i>
+                    </div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+                    <h4 class="review-author">- Person 5</h4>
+                    <span class="review-destination">Patagonia Trek</span>
+                </div>
+
+                <div class="review-card">
+                    <i class="ri-double-quotes-l quote-bg"></i>
+                    <div class="review-stars">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+                    <h4 class="review-author">- Person 6</h4>
+                    <span class="review-destination">Maldives Bliss</span>
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" aria-label="Previous reviews">
+                    <i class="ri-arrow-left-s-line"></i>
+                </button>
+                <button class="slider-btn next-btn" aria-label="Next reviews">
+                    <i class="ri-arrow-right-s-line"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 6. FOOTER ================= -->
     <footer>
         <div class="footer-content">
             <div class="social-links">
@@ -205,8 +443,8 @@ this codebase, via any medium, is strictly prohibited.
                 <p>&copy; 2026 Ralya Holidays. All rights reserved.</p>
                 <p class="developer-credit">
                     <i>
-                    Developed by
-                    <a href="https://manusatyan.com" target="_blank" rel="noopener noreferrer">Manu Satyan</a>
+                        Developed by
+                        <a href="https://manusatyan.com" target="_blank" rel="noopener noreferrer">Manu Satyan</a>
                     </i>
                 </p>
             </div>
@@ -219,6 +457,51 @@ this codebase, via any medium, is strictly prohibited.
 
     <!-- Linking scripts.js file -->
     <script src="scripts.js" defer></script>
+
+    <!-- ================= REVIEW MODAL ================= -->
+    <div id="review-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="close-review-modal" aria-label="Close modal">&times;</button>
+            <h3>Share Your Experience</h3>
+            <p>We'd love to hear about your trip!</p>
+
+            <form id="submit-review-form">
+                <input type="text" placeholder="Your Name" required />
+                <input type="text" placeholder="Package Selected" required />
+
+                <div class="star-rating-input">
+                    <span>Your Rating:</span>
+                    <div class="stars-select">
+                        <i class="ri-star-line" data-val="1"></i>
+                        <i class="ri-star-line" data-val="2"></i>
+                        <i class="ri-star-line" data-val="3"></i>
+                        <i class="ri-star-line" data-val="4"></i>
+                        <i class="ri-star-line" data-val="5"></i>
+                    </div>
+                </div>
+
+                <textarea placeholder="Tell us what you loved about your trip..." rows="4" required></textarea>
+                <button type="submit" class="submit-review-btn">Submit Review</button>
+            </form>
+            <div class="modal-divider">
+                <span>OR</span>
+            </div>
+
+            <a href="PASTE_YOUR_SHORT_URL_HERE" target="_blank" class="google-pill-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px">
+                    <path fill="#EA4335"
+                        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.7 17.74 9.5 24 9.5z" />
+                    <path fill="#4285F4"
+                        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                    <path fill="#FBBC05"
+                        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                    <path fill="#34A853"
+                        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.2-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                </svg>
+                <span class="pill-btn-text">Review us on Google</span>
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>

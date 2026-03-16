@@ -114,12 +114,22 @@ function renderCarousel(region) {
     track.innerHTML = "";
 
     destinationsData[region].forEach((dest) => {
+        // 1. Create the base message using the destination title
+        const rawMessage = `Hi, I'm interested in learning more about your ${dest.title} Itinerary`;
+        
+        // 2. Encode the message so it's safe for a URL
+        const encodedMessage = encodeURIComponent(rawMessage);
+        
+        // 3. Combine it with your WhatsApp link
+        const waUrl = `https://wa.me/+918680813198?text=${encodedMessage}`;
+
         const cardHTML = `
       <div class="card">
         <img src="${dest.img}" alt="${dest.title}" loading="lazy" />
+        <div class="card-overlay"></div>
         <div class="card-content">
           <h3>${dest.title}</h3>
-          <p>${dest.desc}</p>
+          <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="learn-more-btn" style="text-decoration: none; display: inline-block; text-align: center;">Learn More</a>
         </div>
       </div>
     `;
@@ -313,5 +323,109 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         observer.observe(statsSection);
+    }
+});
+
+/* ==========================================================================
+   5. REVIEWS SLIDER LOGIC
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const reviewsTrack = document.getElementById('reviews-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (reviewsTrack && prevBtn && nextBtn) {
+        const getScrollAmount = () => {
+            // Dynamically get the width of one card + the gap
+            const firstCard = reviewsTrack.querySelector('.review-card');
+            if (firstCard) {
+                const cardWidth = firstCard.offsetWidth;
+                const gap = parseInt(window.getComputedStyle(reviewsTrack).gap);
+                return cardWidth + gap;
+            }
+            return 350; // Fallback
+        };
+
+        prevBtn.addEventListener('click', () => {
+            reviewsTrack.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            reviewsTrack.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+    }
+});
+
+/* ==========================================================================
+   6. REVIEW MODAL & INTERACTIVE STARS
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const reviewModal = document.getElementById('review-modal');
+    const openModalBtn = document.getElementById('open-review-modal');
+    const closeModalBtn = document.getElementById('close-review-modal');
+    const reviewForm = document.getElementById('submit-review-form');
+    const starSelects = document.querySelectorAll('.stars-select i');
+
+    // Open/Close Modal Logic
+    if (reviewModal && openModalBtn && closeModalBtn) {
+        openModalBtn.addEventListener('click', () => {
+            reviewModal.classList.add('active');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            reviewModal.classList.remove('active');
+        });
+
+        // Close when clicking the dark overlay outside the box
+        reviewModal.addEventListener('click', (e) => {
+            if (e.target === reviewModal) {
+                reviewModal.classList.remove('active');
+            }
+        });
+    }
+
+    // Interactive Star Rating Logic
+    let currentRating = 0;
+    starSelects.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            currentRating = index + 1;
+            
+            // Loop through all stars and fill them in based on the clicked index
+            starSelects.forEach((s, i) => {
+                if (i < currentRating) {
+                    s.classList.remove('ri-star-line');
+                    s.classList.add('ri-star-fill');
+                    s.style.color = '#f59e0b'; // Gold color
+                } else {
+                    s.classList.remove('ri-star-fill');
+                    s.classList.add('ri-star-line');
+                    s.style.color = '#d1d5db'; // Revert to grey
+                }
+            });
+        });
+    });
+
+    // Form Submission Simulation
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevents the page from reloading
+            
+            if(currentRating === 0) {
+                alert("Please select a star rating!");
+                return;
+            }
+
+            alert(`Thank you for your ${currentRating}-star review! (This will be sent to the team once the backend is connected).`);
+            
+            // Reset and close
+            reviewModal.classList.remove('active');
+            reviewForm.reset();
+            currentRating = 0;
+            starSelects.forEach(s => {
+                s.classList.remove('ri-star-fill');
+                s.classList.add('ri-star-line');
+                s.style.color = '#d1d5db';
+            });
+        });
     }
 });
