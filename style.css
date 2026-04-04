@@ -346,7 +346,7 @@ h2 {
     transition-delay: 0.1s; /* Delays text appearance slightly so the panel has time to widen */
 }
 
-/* Keeps the glassmorphism look you had previously */
+/*
 .panel-glass {
     background: rgba(255, 255, 255, 0.15); 
     backdrop-filter: blur(12px); 
@@ -359,7 +359,15 @@ h2 {
     
     /* Adds a subtle slide-up effect
     transform: translateY(20px);
-    transition: transform 0.4s ease; */
+    transition: transform 0.4s ease;
+}
+    */
+    
+.panel-glass {
+    width: 100%;
+    padding: 0; 
+    margin: 0;
+    /* Completely removed the background, blur, border, and box-shadow! */
 }
 
 .gallery-panel:hover .panel-glass {
@@ -488,7 +496,7 @@ h2 {
     margin: 0 auto;
 }
 
-/* --- Custom Desktop Scrollbar --- */
+/* --- Scrollbar --- */
 .tabs-scrollbar {
     height: 4px;
     background-color: rgba(0, 78, 106, 0.1); /* Faint primary color track */
@@ -570,6 +578,7 @@ h2 {
     display: flex;
     gap: 1.5rem;
     width: max-content;
+    margin: 0 auto; /* Centers the track whenever it is smaller than the screen width */
 }
 
 .card {
@@ -1588,5 +1597,77 @@ footer::before {
     
     .date-field {
         width: 100% !important;
+    }
+}
+
+/* ==========================================================================
+   DESKTOP TABS OVERRIDE
+   ========================================================================== */
+@media (min-width: 768px) {
+    /* 1. Stop the main wrapper from hiding overflowing content */
+    .tabs-wrapper {
+        overflow: visible !important;
+    }
+
+    /* 2. Target the ACTUAL container holding the buttons and force it to wrap */
+    .tabs-track {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        width: 100% !important; /* Shatters the max-content lock! */
+        gap: 1rem !important;
+        padding: 0 !important;
+    }
+
+    /* 3. Hide the custom scrollbar UI entirely on desktop */
+    .tabs-scrollbar {
+        display: none !important;
+    }
+
+    /* 4. Hide the sliding indicator line */
+    #tab-indicator {
+        display: none !important; 
+    }
+
+    /* 5. Transform the tabs into premium Pill Buttons */
+    .tab-btn {
+        padding: 0.6rem 1.5rem !important;
+        border-radius: 30px !important;
+        transition: all 0.3s ease;
+        background: transparent;
+        margin: 0;
+    }
+
+    .tab-btn.active {
+        background-color: var(--primary-color) !important;
+        color: var(--white) !important;
+        box-shadow: 0 4px 12px rgba(0, 78, 106, 0.2);
+    }
+}
+
+/* ==========================================================================
+   HERO OVERLAP FIX (Compact 2x2 Grid for Medium Screens)
+   ========================================================================== */
+@media (max-width: 1400px) and (min-width: 768px) {
+    .about-stats-container {
+        /* Changes to a compact 2-column grid */
+        grid-template-columns: 1fr 1fr; 
+        gap: 1.5rem;
+        
+        /* Keeps it pinned to the right edge, out of the arrow's way */
+        right: 1.5rem;
+        bottom: 2rem;
+        padding: 1.5rem; 
+        
+        /* Ensures the box doesn't stretch unnecessarily wide */
+        width: max-content;
+    }
+
+    /* Forces the Google review to span exactly like it does on mobile */
+    .google-review-item {
+        grid-column: span 2; 
+        margin-top: 0.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15); 
     }
 }
